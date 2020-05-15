@@ -74,6 +74,12 @@ public class Graph {
         return res;
     }
 
+    public  void setValue(String start,String end ,int value){
+        int row = vertices.indexOf(start);
+        int col = vertices.indexOf(end);
+        mat[row][col] = value;
+    }
+    
     private void builtMatrix(){
         for(int i = 0 ; i < vertexNum ; i++)
             for(int j = 0 ; j < vertexNum ; j++)

@@ -45,8 +45,16 @@ public class Main {
         String start = input.next();
         System.out.print("end: ");
         String end = input.next();
-        System.out.println(maximumFlow.fordFulkerson(start,end));
-
+        maximumFlow.fordFulkerson(start,end);
+        for(int i = 0 ; i < maximumFlow.paths.size() ; i++){
+            System.out.println("the path");
+            for(int j = 0 ; j < maximumFlow.paths.get(i).edges.size() ; j++){
+                System.out.println(maximumFlow.paths.get(i).edges.get(j).initial + " "
+                        + maximumFlow.paths.get(i).edges.get(j).terminate +" " + maximumFlow.paths.get(i).edges.get(j).weight);
+            }
+        }
+        System.out.println("Maximum Flow = " + maximumFlow.res);
+        
     }
 }
 /*

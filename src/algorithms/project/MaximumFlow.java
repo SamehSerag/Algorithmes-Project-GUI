@@ -2,12 +2,20 @@ package algorithms.project;
 
 import java.util.Vector;
 
+class path{
+    Vector <Edge> edges = new Vector<>();
+}
+
 public class MaximumFlow {
     private Graph graph;
     private Vector<Edge> edges;
+    Vector <path> paths;
+    int res;
     public MaximumFlow(Graph graph){
         this.graph = new Graph(graph);
         edges = graph.getEdges();
+        paths = new Vector<>();
+        res = 0;
     }
 
     private int[] BFS(int initialVertex , int terminalVertex ){
@@ -35,9 +43,10 @@ public class MaximumFlow {
         return null;
     }
 
-    public int fordFulkerson(String initialVertex , String terminalVertex ){
+    public void fordFulkerson(String initialVertex , String terminalVertex ){
         int sum = 0;
-        if(initialVertex.equals(terminalVertex)) return 0;
+      
+        if(initialVertex.equals(terminalVertex)) return;
         int start = graph.getVertices().indexOf(initialVertex);
         int end = graph.getVertices().indexOf(terminalVertex);
         while(true){
@@ -48,14 +57,17 @@ public class MaximumFlow {
                 int j = parent[i];
                 min = Math.min(min,graph.getMat()[j][i]);
             }
+            path path = new path();
             for(int i = end ; i != start ; i = parent[i]){
                 int j = parent[i];
                 //graph.getMat()[i][j] += min;
                 graph.getMat()[j][i] -= min;
+                path.edges.add(0,new Edge(graph.getVertices().get(j),graph.getVertices().get(i),graph.getMat()[j][i]));
             }
+            paths.add(path);
             sum += min;
         }
-        return sum;
+        res =  sum;
     }
 
 
