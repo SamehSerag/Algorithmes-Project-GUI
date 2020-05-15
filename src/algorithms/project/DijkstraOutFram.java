@@ -76,6 +76,8 @@ public class DijkstraOutFram extends javax.swing.JFrame {
         backBt = new javax.swing.JButton();
         stepBystepBt = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        stepBystepBt1 = new javax.swing.JButton();
 
         jButton1.setText("jButton1");
 
@@ -127,42 +129,66 @@ public class DijkstraOutFram extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Lucida Calligraphy", 1, 15)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 153));
-        jLabel2.setText("For See Resuilt step by step press Next Step");
+        jLabel2.setText("To See Result step by step press Next Step One by One");
+
+        jLabel3.setFont(new java.awt.Font("Lucida Calligraphy", 1, 15)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 153));
+        jLabel3.setText("To See The Whole Result press Result");
+
+        stepBystepBt1.setFont(new java.awt.Font("Lucida Calligraphy", 1, 15)); // NOI18N
+        stepBystepBt1.setForeground(new java.awt.Color(0, 0, 255));
+        stepBystepBt1.setText("Result");
+        stepBystepBt1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                stepBystepBt1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(38, 38, 38))
             .addGroup(layout.createSequentialGroup()
-                .addGap(98, 98, 98)
+                .addGap(21, 21, 21)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(stepBystepBt))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(stepBystepBt1)
+                        .addGap(16, 16, 16)))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(backBt)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(closeBt, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(38, 38, 38))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                .addComponent(stepBystepBt)
-                .addContainerGap())
+                .addGap(112, 112, 112))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(36, 36, 36)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(stepBystepBt1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(stepBystepBt))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(43, 43, 43)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -190,16 +216,23 @@ public class DijkstraOutFram extends javax.swing.JFrame {
 
     private void stepBystepBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stepBystepBtActionPerformed
         // TODO add your handling code here:
+        if(count == 0){
+            clearTable();
+            model.addRow(new Object[]{
+                ShortestPath.vertexNames.get(0),
+                ShortestPath.distance[0]
+        
+            });
+        }
         vistedBool = false;
-        count++;
-
         if(count < ShortestPath.map.size()){
             model.addRow(new Object[]{
-                ShortestPath.vertexNames.get(count),
-                ShortestPath.distance[count]
+                ShortestPath.vertexNames.get(count+1),
+                ShortestPath.distance[count+1]
         
             });
             displayStepByStep();
+            count++;
             
         }
         else{
@@ -209,6 +242,33 @@ public class DijkstraOutFram extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_stepBystepBtActionPerformed
+    public void clearTable(){
+        model.getDataVector().removeAllElements();
+        model.fireTableDataChanged(); // notifies the JTable that the model has changed
+        
+        visitedArr  = new Vector<>();
+        visitedArrBlue  = new Vector<>();
+        visitedArrGray  = new Vector<>();
+        count = 0 ;
+        vistedBool = false;
+        
+        stepBystepBt.setText("Next Step");
+        stepBystepBt.setForeground(Color.BLUE);
+        stepBystepBt.setEnabled(true);
+    }
+    private void stepBystepBt1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stepBystepBt1ActionPerformed
+        // TODO add your handling code here:
+        ChooseFram.displayDijkatra();
+        
+        clearTable();
+        for (int i = 0; i <ShortestPath.vertexNames.size() ; i++) {
+            model.addRow(new Object[]{
+                ShortestPath.vertexNames.get(i),
+                ShortestPath.distance[i]
+        
+            });
+       }
+    }//GEN-LAST:event_stepBystepBt1ActionPerformed
     public static void displayStepByStep(){
         Transformer<String, Paint> edgePaint = new Transformer<String, Paint>() {    
                     @Override
@@ -318,13 +378,15 @@ public class DijkstraOutFram extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton stepBystepBt;
+    private javax.swing.JButton stepBystepBt1;
     private javax.swing.JTable tableData;
     // End of variables declaration//GEN-END:variables
     public static Vector<String> visitedArr ;
     public static Vector<String> visitedArrBlue ;
     public static Vector<String> visitedArrGray ;
-    public static int count ;
+    public int count ;
     public static Boolean vistedBool;
 }
