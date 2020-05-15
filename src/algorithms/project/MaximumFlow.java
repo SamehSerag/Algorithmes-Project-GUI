@@ -1,21 +1,33 @@
 package algorithms.project;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Vector;
 
 class path{
     Vector <Edge> edges = new Vector<>();
+    Map map = new HashMap();
+    public void addEdge(String s,String e,int w){
+        edges.add(0,new Edge(s,e,w));
+        String str = s + " " +e ;
+        map.put(str, w);
+    }
 }
 
 public class MaximumFlow {
-    private Graph graph;
-    private Vector<Edge> edges;
+    public static Graph graph;
+    public Vector<Edge> edges;
     Vector <path> paths;
     int res;
+    Vector <Integer> minimum;
+    Vector <String > routs;
     public MaximumFlow(Graph graph){
         this.graph = new Graph(graph);
         edges = graph.getEdges();
         paths = new Vector<>();
         res = 0;
+        minimum = new Vector<>();
+        routs = new Vector<>();
     }
 
     private int[] BFS(int initialVertex , int terminalVertex ){
@@ -57,14 +69,23 @@ public class MaximumFlow {
                 int j = parent[i];
                 min = Math.min(min,graph.getMat()[j][i]);
             }
+            minimum.add(min);
             path path = new path();
             for(int i = end ; i != start ; i = parent[i]){
                 int j = parent[i];
                 //graph.getMat()[i][j] += min;
                 graph.getMat()[j][i] -= min;
-                path.edges.add(0,new Edge(graph.getVertices().get(j),graph.getVertices().get(i),graph.getMat()[j][i]));
+               // path.edges.add(0,new Edge(graph.getVertices().get(j),graph.getVertices().get(i),graph.getMat()[j][i]));
+                path.addEdge(graph.getVertices().get(j), graph.getVertices().get(i), graph.getMat()[j][i]);
             }
+            String pathName ="";
+            for(int i = 0 ; i < path.edges.size() ; i++){
+                pathName += path.edges.get(i).initial + ",";
+            }
+            pathName += path.edges.get(path.edges.size() - 1).terminate;
+            routs.add(pathName);
             paths.add(path);
+            
             sum += min;
         }
         res =  sum;

@@ -62,7 +62,7 @@ public class ShortestPath {
             System.out.println("Return = " + i);
             spSet[i] = true;
             for (int j = 0; j < vertexNum; j++) {
-                if (!spSet[j] && graphMatrix[i][j] != 0 && distance[i] + graphMatrix[i][j] < distance[j] && distance[i] != Integer.MAX_VALUE ) {
+                if (!spSet[j] && graphMatrix[i][j] > 0  && distance[i] + graphMatrix[i][j] < distance[j] && distance[i] != Integer.MAX_VALUE ) {
                     distance[j] = distance[i] + graphMatrix[i][j];
                     steps[j][0] = i;
                     steps[j][1] = j;

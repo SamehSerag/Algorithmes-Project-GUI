@@ -53,6 +53,10 @@ public class Main {
                         + maximumFlow.paths.get(i).edges.get(j).terminate +" " + maximumFlow.paths.get(i).edges.get(j).weight);
             }
         }
+        System.out.println("routs:");
+        for ( int i = 0 ; i < maximumFlow.routs.size() ; i++){
+            System.out.println(maximumFlow.routs.get(i)+" "+maximumFlow.minimum.get(i));
+        }
         System.out.println("Maximum Flow = " + maximumFlow.res);
         
     }

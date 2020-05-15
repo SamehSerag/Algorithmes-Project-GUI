@@ -41,26 +41,60 @@ public class EdgeInputFram extends javax.swing.JFrame {
        // finishBt.setEnabled(false);
         greenTx.setVisible(false);
         
+//        Vector<String> vertices = new Vector<>();
+//        vertices.add("a");
+//        vertices.add("b");
+//        vertices.add("c");
+//        
+//        VertexNameInputFram.g = new Graph(vertices);
+//        VertexNameInputFram.g.vertexNum = 3;
+//        
+//        
+//        VertexNameInputFram.g.addEdge("a", "b", 1);
+//        VertexNameInputFram.g.addEdge("a", "c", 10);
+//        VertexNameInputFram.g.addEdge("b", "c", 2);
+//        
+//        EdgeInputFram.directedGraph.addEdge("1","a","b");
+//        EdgeInputFram.directedGraph.addEdge("10","a","c");
+//        EdgeInputFram.directedGraph.addEdge("2","b","c");
+//        
+//        EdgeInputFram.map.put("1", "a b");
+//        EdgeInputFram.map.put("10", "a c");
+//        EdgeInputFram.map.put("2", "b c");
+
         Vector<String> vertices = new Vector<>();
-        vertices.add("a");
-        vertices.add("b");
-        vertices.add("c");
+        vertices.add("s");
+        vertices.add("1");
+        vertices.add("2");
+        vertices.add("t");
+
         
         VertexNameInputFram.g = new Graph(vertices);
-        VertexNameInputFram.g.vertexNum = 3;
+        VertexNameInputFram.g.vertexNum = 4;
         
         
-        VertexNameInputFram.g.addEdge("a", "b", 1);
-        VertexNameInputFram.g.addEdge("a", "c", 10);
-        VertexNameInputFram.g.addEdge("b", "c", 2);
+        VertexNameInputFram.g.addEdge("s", "1", 3);
+        VertexNameInputFram.g.addEdge("s", "2", 2);
+        VertexNameInputFram.g.addEdge("1", "2", 5);
+        VertexNameInputFram.g.addEdge("1", "t", 2);
+        VertexNameInputFram.g.addEdge("2", "t", 3);
+
         
-        EdgeInputFram.directedGraph.addEdge("1","a","b");
-        EdgeInputFram.directedGraph.addEdge("10","a","c");
-        EdgeInputFram.directedGraph.addEdge("2","b","c");
+        EdgeInputFram.directedGraph.addEdge("3","s", "1");
+        EdgeInputFram.directedGraph.addEdge("2","s", "2");
+        EdgeInputFram.directedGraph.addEdge("5","1", "2");
+        EdgeInputFram.directedGraph.addEdge("*2","1", "t");
+        EdgeInputFram.directedGraph.addEdge("*3","2", "t");
+
         
-        EdgeInputFram.map.put("1", "a b");
-        EdgeInputFram.map.put("10", "a c");
-        EdgeInputFram.map.put("2", "b c");
+        
+        EdgeInputFram.map.put("3", "s 1");
+        EdgeInputFram.map.put("2", "s 2");
+        EdgeInputFram.map.put("5", "1 2");
+        EdgeInputFram.map.put("*2", "1 t");
+        EdgeInputFram.map.put("*3", "2 t");
+
+
 
         
         //sheel el comment
@@ -332,29 +366,6 @@ public class EdgeInputFram extends javax.swing.JFrame {
             vs.getRenderContext().setLabelOffset(20);
             vs.getRenderContext().setEdgeLabelTransformer(transformer1);
             vs.getRenderContext().setVertexLabelTransformer(transformer2);
-
-//            Transformer<String, Paint> edgePaint = new Transformer<String, Paint>() {    
-//            @Override
-//            public Paint transform(String s) {    // s represents the edge
-//                    //String weight = s.replace("*", "");
-//                    //System.out.println(weight);
-//                    System.out.println("Map = "+EdgeInputFram.map.get(s));
-//                    System.out.println(ShortestPath.map.containsValue(EdgeInputFram.map.get(s)));
-//                
-//                     if (ShortestPath.map.containsValue(EdgeInputFram.map.get(s))){   
-//                        try {
-//                            Thread.sleep(2000);
-//                        } catch (InterruptedException ex) {
-//                            Logger.getLogger(ChooseFram.class.getName()).log(Level.SEVERE, null, ex);
-//                        }                        
-//                         return Color.BLUE;
-//                     }
-//                     else {
-//                         return Color.BLACK;
-//                     }
-//                }
-//            };
-//            vs.getRenderContext().setEdgeDrawPaintTransformer(edgePaint);
 
             
             

@@ -90,7 +90,6 @@ public class ChooseFram extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
         destLab = new javax.swing.JLabel();
         sourceTx = new javax.swing.JTextField();
         sourceLab = new javax.swing.JLabel();
@@ -116,14 +115,6 @@ public class ChooseFram extends javax.swing.JFrame {
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
-            }
-        });
-
-        jButton3.setFont(new java.awt.Font("Lucida Calligraphy", 1, 15)); // NOI18N
-        jButton3.setText("Both");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
             }
         });
 
@@ -155,61 +146,62 @@ public class ChooseFram extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setText("(for maximum flow)");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(59, 59, 59)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
+                        .addGap(21, 21, 21)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton1)
-                                .addGap(52, 52, 52)
-                                .addComponent(jButton2)
-                                .addGap(49, 49, 49)
-                                .addComponent(jButton3))
-                            .addGroup(layout.createSequentialGroup()
+                            .addComponent(addBt, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(12, 12, 12)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(sourceLab)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(destLab)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel2)))
-                                .addGap(30, 30, 30)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(destTx)
-                                    .addComponent(sourceTx)))
-                            .addComponent(addBt, javax.swing.GroupLayout.Alignment.TRAILING))))
-                .addContainerGap(43, Short.MAX_VALUE))
+                                        .addComponent(jLabel2)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(destTx, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(sourceLab)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(sourceTx, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29)))
+                .addGap(38, 38, 38))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(21, 21, 21)
                 .addComponent(jLabel1)
-                .addGap(26, 26, 26)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(jButton2))
                 .addGap(50, 50, 50)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(sourceTx, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(sourceLab))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(destLab)
-                    .addComponent(destTx, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(38, 38, 38)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(destLab)
+                            .addComponent(jLabel2))
+                        .addGap(41, 41, 41))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(destTx, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(addBt)
                 .addContainerGap())
         );
@@ -317,6 +309,8 @@ public class ChooseFram extends javax.swing.JFrame {
          jLabel2.setVisible(false);
 
          maximumBool= true;
+         dijkstaBool = false;
+         boothBool = false;
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void sourceTxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sourceTxActionPerformed
@@ -351,14 +345,20 @@ public class ChooseFram extends javax.swing.JFrame {
                 
             }
             else if (maximumBool){
-                if(!VertexNameInputFram.g.vertices.contains(sourceTx.getText())){
+                if(!VertexNameInputFram.g.vertices.contains(sourceTx.getText())
+                    || !VertexNameInputFram.g.vertices.contains(destTx.getText())){
                     JOptionPane.showMessageDialog(this, "You must enter one of the vertices name\n "+ VertexNameInputFram.g.vertices,  
                    "ERROR", JOptionPane.ERROR_MESSAGE); 
                 }
                 else{
-                    MaximumFlow maximumFlow = new MaximumFlow(VertexNameInputFram.g);
-                    maximumflowNum = maximumFlow.fordFulkerson(sourceTx.getText(),destTx.getText());
-                    System.out.println(maximumFlow.fordFulkerson(sourceTx.getText(),destTx.getText()));
+                    maximumFlow = new MaximumFlow(VertexNameInputFram.g);
+                    maximumFlow.fordFulkerson(sourceTx.getText(),destTx.getText());
+                    maximumflowNum = maximumFlow.res;
+                    
+                    super.setVisible(false);
+                    MaximumOutFram maxOutFram = new MaximumOutFram();
+                    maxOutFram.setVisible(true);
+                    //System.out.println(maximumFlow.fordFulkerson(sourceTx.getText(),destTx.getText()));
                 }
                    
             }
@@ -416,17 +416,7 @@ public class ChooseFram extends javax.swing.JFrame {
 
         
     }
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-        addBt.setVisible(true);
-         sourceLab.setVisible(true);
-         sourceTx.setVisible(true);
-         destLab.setVisible(true);
-         destTx.setVisible(true);
-         jLabel2.setVisible(true);
-         boothBool = true;
-    }//GEN-LAST:event_jButton3ActionPerformed
-
+    
     /**
      * @param args the command line arguments
      */
@@ -468,7 +458,6 @@ public class ChooseFram extends javax.swing.JFrame {
     public javax.swing.JTextField destTx;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     public javax.swing.JLabel sourceLab;
@@ -479,6 +468,7 @@ public class ChooseFram extends javax.swing.JFrame {
     public static Boolean boothBool ;
     public static String src;
     public static int maximumflowNum ;
+    public static MaximumFlow maximumFlow;
 
 
 }

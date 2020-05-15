@@ -48,7 +48,7 @@ public class Graph {
         Vector <Edge> edges = new Vector<>();
         for(int i = 0 ; i < vertexNum ; i++){
             for (int j = 0 ; j < vertexNum ; j++){
-                if(mat[i][j] > 0){
+                if(mat[i][j] >= 0){
                     edges.add(new Edge(vertices.get(i),vertices.get(j),mat[i][j]));
                 }
             }
@@ -83,7 +83,7 @@ public class Graph {
     private void builtMatrix(){
         for(int i = 0 ; i < vertexNum ; i++)
             for(int j = 0 ; j < vertexNum ; j++)
-                mat[i][j] = 0;
+                mat[i][j] = -1;
     }
 
     void print(){

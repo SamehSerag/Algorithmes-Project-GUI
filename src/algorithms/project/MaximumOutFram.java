@@ -7,12 +7,17 @@ package algorithms.project;
  */
 
 
+import static algorithms.project.ChooseFram.maximumflowNum;
 import static algorithms.project.EdgeInputFram.frame;
 import static algorithms.project.EdgeInputFram.vs;
+import edu.uci.ics.jung.algorithms.layout.CircleLayout;
+import edu.uci.ics.jung.graph.DirectedSparseGraph;
 //import com.sun.xml.internal.ws.api.streaming.XMLStreamReaderFactory;
 import edu.uci.ics.jung.graph.SparseGraph;
+import edu.uci.ics.jung.visualization.VisualizationImageServer;
 import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Paint;
 import java.awt.Stroke;
 import java.util.Vector;
@@ -24,35 +29,35 @@ import org.apache.commons.collections15.Transformer;
  *
  * @author Home
  */
-public class DijkstraOutFram extends javax.swing.JFrame {
+public class MaximumOutFram extends javax.swing.JFrame {
 
     /**
      * Creates new form OutPutFram
      */
     DefaultTableModel model;
-    public DijkstraOutFram() {
+    public MaximumOutFram() {
         initComponents();
         setLocationRelativeTo(null);
         visitedArr = new Vector();
         visitedArrBlue = new Vector();
         visitedArrGray = new Vector();
+        edgeNamesArr = new Vector();
         vistedBool = false;
         count = 0 ;
 
         model = new DefaultTableModel();
         tableData.setModel(model);
-        model.addColumn("Vertex Name");
+        model.addColumn("Path");
         
-        model.addColumn("Shortest Path From "+ ChooseFram.src);
-        jLabel1.setText("The Shortest Path From "+ ChooseFram.src+ " to All Verteces");
+        model.addColumn("Maximum Flow");
         
         
 //        for (int i = 0; i <ShortestPath.vertexNames.size() ; i++) {
-            model.addRow(new Object[]{
-                ShortestPath.vertexNames.get(0),
-                ShortestPath.distance[0]
-        
-            });
+//            model.addRow(new Object[]{
+//                ShortestPath.vertexNames.get(0),
+//                ShortestPath.distance[0]
+//        
+//            });
 //        }
         
 
@@ -71,13 +76,13 @@ public class DijkstraOutFram extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableData = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
+        maxAddressLb = new javax.swing.JLabel();
         closeBt = new javax.swing.JButton();
         backBt = new javax.swing.JButton();
         stepBystepBt = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        stepBystepBt1 = new javax.swing.JButton();
+        resultBt = new javax.swing.JButton();
 
         jButton1.setText("jButton1");
 
@@ -98,9 +103,9 @@ public class DijkstraOutFram extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tableData);
 
-        jLabel1.setFont(new java.awt.Font("Lucida Calligraphy", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(153, 204, 0));
-        jLabel1.setText("The Shortest Path From Source to All Verteces");
+        maxAddressLb.setFont(new java.awt.Font("Lucida Calligraphy", 1, 18)); // NOI18N
+        maxAddressLb.setForeground(new java.awt.Color(153, 204, 0));
+        maxAddressLb.setText("Maximum Flow");
 
         closeBt.setFont(new java.awt.Font("Lucida Calligraphy", 1, 15)); // NOI18N
         closeBt.setText("Exit");
@@ -135,12 +140,12 @@ public class DijkstraOutFram extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(0, 0, 153));
         jLabel3.setText("To See The Whole Result press Result");
 
-        stepBystepBt1.setFont(new java.awt.Font("Lucida Calligraphy", 1, 15)); // NOI18N
-        stepBystepBt1.setForeground(new java.awt.Color(0, 0, 255));
-        stepBystepBt1.setText("Result");
-        stepBystepBt1.addActionListener(new java.awt.event.ActionListener() {
+        resultBt.setFont(new java.awt.Font("Lucida Calligraphy", 1, 15)); // NOI18N
+        resultBt.setForeground(new java.awt.Color(0, 0, 255));
+        resultBt.setText("Result");
+        resultBt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                stepBystepBt1ActionPerformed(evt);
+                resultBtActionPerformed(evt);
             }
         });
 
@@ -148,10 +153,6 @@ public class DijkstraOutFram extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(38, 38, 38))
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -162,28 +163,33 @@ public class DijkstraOutFram extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(stepBystepBt1)
+                        .addComponent(resultBt)
                         .addGap(16, 16, 16)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(backBt)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(closeBt, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(112, 112, 112))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(backBt)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(closeBt, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(112, 112, 112))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(maxAddressLb)
+                        .addGap(233, 233, 233))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(maxAddressLb)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(stepBystepBt1))
+                    .addComponent(resultBt))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -216,26 +222,42 @@ public class DijkstraOutFram extends javax.swing.JFrame {
 
     private void stepBystepBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stepBystepBtActionPerformed
         // TODO add your handling code here:
-        if(count == 0){
+        
+        if(counter == 0){
             clearTable();
-            model.addRow(new Object[]{
-                ShortestPath.vertexNames.get(0),
-                ShortestPath.distance[0]
-        
-            });
+            //counter = -1;
+            
         }
+        if(flag){
+            clearTable();
+            flag = false;
+            counter = 0;
+            
+        }
+        clearVectors();
         vistedBool = false;
-        if(count < ShortestPath.map.size()){
+        if(counter < ChooseFram.maximumFlow.paths.size()){
+            
+            displayStepByStep();
             model.addRow(new Object[]{
-                ShortestPath.vertexNames.get(count+1),
-                ShortestPath.distance[count+1]
+                ChooseFram.maximumFlow.routs.get(counter),
+                ChooseFram.maximumFlow.minimum.get(counter)
         
             });
-            displayStepByStep();
-            count++;
+            
+            counter++;
+
+//            count++;
             
         }
         else{
+                counter = 0;
+                model.addRow(new Object[]{
+                    "Maximum Flow",
+                    ChooseFram.maximumflowNum
+
+                });
+            
             stepBystepBt.setText("Finished");
             stepBystepBt.setForeground(new Color(0,100,0));
             stepBystepBt.setEnabled(false);
@@ -246,9 +268,7 @@ public class DijkstraOutFram extends javax.swing.JFrame {
         model.getDataVector().removeAllElements();
         model.fireTableDataChanged(); // notifies the JTable that the model has changed
         
-        visitedArr  = new Vector<>();
-        visitedArrBlue  = new Vector<>();
-        visitedArrGray  = new Vector<>();
+        
         count = 0 ;
         vistedBool = false;
         
@@ -256,80 +276,152 @@ public class DijkstraOutFram extends javax.swing.JFrame {
         stepBystepBt.setForeground(Color.BLUE);
         stepBystepBt.setEnabled(true);
     }
-    private void stepBystepBt1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stepBystepBt1ActionPerformed
+    public void clearVectors(){
+        visitedArr  = new Vector<>();
+        visitedArrBlue  = new Vector<>();
+        visitedArrGray  = new Vector<>();
+    }
+    private void resultBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resultBtActionPerformed
         // TODO add your handling code here:
-        ChooseFram.displayDijkatra();
-        
         clearTable();
-        for (int i = 0; i <ShortestPath.vertexNames.size() ; i++) {
+        clearVectors();
+        counter = 1 ;
+        flag = true;
+        //ChooseFram.displayDijkatra();
+        //maxAddressLb.setText("Maximum Flow = " + ChooseFram.maximumflowNum);
+        displayMaximumFlow();
+        for (int i = 0; i < ChooseFram.maximumFlow.routs.size(); i++) {
             model.addRow(new Object[]{
-                ShortestPath.vertexNames.get(i),
-                ShortestPath.distance[i]
+                ChooseFram.maximumFlow.routs.get(i),
+                ChooseFram.maximumFlow.minimum.get(i)
         
             });
-       }
-    }//GEN-LAST:event_stepBystepBt1ActionPerformed
-    public static void displayStepByStep(){
+        }
+        model.addRow(new Object[]{
+            "Maximum Flow",
+            ChooseFram.maximumflowNum
+
+        });
+
+        //counter = 0 ;
+    }//GEN-LAST:event_resultBtActionPerformed
+    public void displayMaximumFlow(){
+        Vector<Edge>edges2 = MaximumFlow.graph.getEdges();
+        System.out.println(edges2.size());
+        for (int i = 0; i < edges2.size(); i++) {
+            String weight = String.valueOf(edges2.get(i).weight);
+            System.out.println(edges2.get(i).weight+ ","+edges2.get(i).initial+"," +edges2.get(i).terminate);
+             while(edgeNamesArr.contains(weight)){weight+="*" ;}
+                edgeNamesArr.add(weight);       
+                directedGraph.addEdge(weight,edges2.get(i).initial, edges2.get(i).terminate);
+        }
+        vs =
+               new VisualizationImageServer<String, String>(new CircleLayout<String, String>(directedGraph), 
+                       new Dimension(200, 200));
+
+           
+            
+            Transformer<String, String> transformer2 = new Transformer<String, String>() {
+
+                @Override
+                public String transform(String arg0) {
+                    return arg0;
+                }
+
+            };
+
+
+
+            Transformer<String, String> transformer1 = new Transformer<String, String>() {
+
+                @Override
+                public String transform(String arg0){
+                    return arg0;
+                }
+            };
+
+         // vv is the VirtualizationViewer
+            vs.getRenderContext().setLabelOffset(20);
+            vs.getRenderContext().setEdgeLabelTransformer(transformer1);
+            vs.getRenderContext().setVertexLabelTransformer(transformer2);
+
+
+
+        //frame = new JFrame();
+        frame.getContentPane().add(vs);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
+        frame.setSize(500,400);
+        frame.setTitle("Maximum Flow");
+
+    
+    } 
+    
+    public void displayStepByStep(){
         Transformer<String, Paint> edgePaint = new Transformer<String, Paint>() {    
-                    @Override
-                    public Paint transform(String s) {    // s represents the edge
-                            //String weight = s.replace("*", "");
-                            //System.out.println(weight);
-                            System.out.println("Map = "+EdgeInputFram.map.get(s));
-                            System.out.println(ShortestPath.map.containsValue(EdgeInputFram.map.get(s)));
-                            if(!visitedArr.contains(s) && !vistedBool){
-                                visitedArr.add(s);
-                                
-                                if (ShortestPath.map.containsValue(EdgeInputFram.map.get(s))){
-                                    visitedArrBlue.add(s);
-                                    System.out.println("In Blue");
-                                    vistedBool = true;
-                                    //count++;
-                                    return Color.BLUE;
-                                }
-                                else {
-                                    //count++;
-                                    visitedArrGray.add(s);
-                                    System.out.println("In Gray");
-                                    return Color.LIGHT_GRAY;
-                                }
-                            }
-                            else if (visitedArrBlue.contains(s))
-                                return Color.BLUE;
-                            else if (visitedArrGray.contains(s))
-                                return Color.LIGHT_GRAY;
-                            else
-                                return Color.LIGHT_GRAY;
-                           
+            @Override
+            public Paint transform(String s) {    // s represents the edge
+                    //String weight = s.replace("*", "");
+                    //System.out.println(weight);
+                    //System.out.println("Map = "+EdgeInputFram.map.get(s));
+                    //System.out.println(ShortestPath.map.containsValue(EdgeInputFram.map.get(s)));
+                    
+                    System.out.println("S = "+s);
+
+                    if(!visitedArr.contains(s) && !vistedBool){
+                        System.out.println("IN Bigger IF");
+                        visitedArr.add(s);
+                        //String str = ChooseFram.maximumFlow.paths.get(0).edges.get(0).initial;
+                        if (ChooseFram.maximumFlow.paths.get(counter-1).map.containsKey(EdgeInputFram.map.get(s))){
+                            visitedArrBlue.add(s);
+                            System.out.println("In Blue");
+                            //vistedBool = true;
+                            //count++;
+                            return Color.BLUE;
                         }
-                    };
-                    //vistedBool = false;
-                        ///Change Edge Font 
-                    vs.getRenderContext().setLabelOffset(20);
-                    vs.getRenderContext().setEdgeStrokeTransformer(new Transformer<String,Stroke>(){
-                       @Override
-                       public Stroke transform(String s) {
-                           return new BasicStroke(5);
-                       }
-                   });
-                   vs.getRenderContext().setEdgeArrowStrokeTransformer(new Transformer<String,Stroke>(){
-                       @Override
-                       public Stroke transform(String s) {
-                           return new BasicStroke(5);
-                       }
-                   });
+                        else {
+                            //count++;
+                            visitedArrGray.add(s);
+                            System.out.println("In Gray");
+                            return Color.LIGHT_GRAY;
+                        }
+                    }
+                    else if (visitedArrBlue.contains(s))
+                        return Color.BLUE;
+                    else if (visitedArrGray.contains(s))
+                        return Color.LIGHT_GRAY;
+                    else
+                        return Color.LIGHT_GRAY;
+
+                }
+            };
+            //vistedBool = false;
+                ///Change Edge Font 
+            EdgeInputFram.vs.getRenderContext().setLabelOffset(20);
+            EdgeInputFram.vs.getRenderContext().setEdgeStrokeTransformer(new Transformer<String,Stroke>(){
+               @Override
+               public Stroke transform(String s) {
+                   return new BasicStroke(5);
+               }
+           });
+           EdgeInputFram.vs.getRenderContext().setEdgeArrowStrokeTransformer(new Transformer<String,Stroke>(){
+               @Override
+               public Stroke transform(String s) {
+                   return new BasicStroke(5);
+               }
+           });
 
 
-                    EdgeInputFram.vs.getRenderContext().setEdgeDrawPaintTransformer(edgePaint);
-                    //EdgeInputFram.vs.getRenderContext().setEdgeFontTransformer();
+            EdgeInputFram.vs.getRenderContext().setEdgeDrawPaintTransformer(edgePaint);
+            //EdgeInputFram.vs.getRenderContext().setEdgeFontTransformer();
 
-                    EdgeInputFram.frame.getContentPane().add(vs);
-                    //frame = new JFrame();
-                    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                    frame.pack();
-                    frame.setVisible(true);
-                    frame.setSize(500,400);
-                    frame.setTitle("Shortest Path");
+            EdgeInputFram.frame.getContentPane().add(EdgeInputFram.vs);
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.pack();
+            frame.setVisible(true);
+            frame.setSize(500,400);
+            frame.setTitle("Maximum Flow Steps");
     }
     /**
      * @param args the command line arguments
@@ -348,14 +440,22 @@ public class DijkstraOutFram extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DijkstraOutFram.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MaximumOutFram.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DijkstraOutFram.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MaximumOutFram.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DijkstraOutFram.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MaximumOutFram.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DijkstraOutFram.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MaximumOutFram.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -368,7 +468,7 @@ public class DijkstraOutFram extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DijkstraOutFram().setVisible(true);
+                new MaximumOutFram().setVisible(true);
             }
         });
     }
@@ -377,17 +477,25 @@ public class DijkstraOutFram extends javax.swing.JFrame {
     private javax.swing.JButton backBt;
     private javax.swing.JButton closeBt;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel maxAddressLb;
+    private javax.swing.JButton resultBt;
     private javax.swing.JButton stepBystepBt;
-    private javax.swing.JButton stepBystepBt1;
     private javax.swing.JTable tableData;
     // End of variables declaration//GEN-END:variables
     public static Vector<String> visitedArr ;
     public static Vector<String> visitedArrBlue ;
     public static Vector<String> visitedArrGray ;
+    public  Vector<String> edgeNamesArr;
     public int count ;
     public static Boolean vistedBool;
+    public  DirectedSparseGraph<String, String> directedGraph = new DirectedSparseGraph<String, String>();
+    public static int counter = 0;
+    public Boolean flag = false;  
+    public  VisualizationImageServer<String, String> vs;
+
+    
+
 }
