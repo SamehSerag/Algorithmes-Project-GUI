@@ -338,9 +338,10 @@ public class ChooseFram extends javax.swing.JFrame {
                     
                     //displayDijkatra();
                    
-                    super.setVisible(false);
                     DijkstraOutFram diOut = new DijkstraOutFram();
                     diOut.setVisible(true);
+                    super.setVisible(false);
+
                 }
                 
             }
@@ -355,9 +356,10 @@ public class ChooseFram extends javax.swing.JFrame {
                     maximumFlow.fordFulkerson(sourceTx.getText(),destTx.getText());
                     maximumflowNum = maximumFlow.res;
                     
-                    super.setVisible(false);
+                    
                     MaximumOutFram maxOutFram = new MaximumOutFram();
                     maxOutFram.setVisible(true);
+                    super.setVisible(false);
                     //System.out.println(maximumFlow.fordFulkerson(sourceTx.getText(),destTx.getText()));
                 }
                    

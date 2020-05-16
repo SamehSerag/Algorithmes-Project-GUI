@@ -38,7 +38,7 @@ public class EdgeInputFram extends javax.swing.JFrame {
     public EdgeInputFram() {
         initComponents();
         setLocationRelativeTo(null);
-       // finishBt.setEnabled(false);
+        finishBt.setEnabled(false);
         greenTx.setVisible(false);
         
 //        Vector<String> vertices = new Vector<>();
@@ -62,37 +62,37 @@ public class EdgeInputFram extends javax.swing.JFrame {
 //        EdgeInputFram.map.put("10", "a c");
 //        EdgeInputFram.map.put("2", "b c");
 
-        Vector<String> vertices = new Vector<>();
-        vertices.add("s");
-        vertices.add("1");
-        vertices.add("2");
-        vertices.add("t");
-
-        
-        VertexNameInputFram.g = new Graph(vertices);
-        VertexNameInputFram.g.vertexNum = 4;
-        
-        
-        VertexNameInputFram.g.addEdge("s", "1", 3);
-        VertexNameInputFram.g.addEdge("s", "2", 2);
-        VertexNameInputFram.g.addEdge("1", "2", 5);
-        VertexNameInputFram.g.addEdge("1", "t", 2);
-        VertexNameInputFram.g.addEdge("2", "t", 3);
-
-        
-        EdgeInputFram.directedGraph.addEdge("3","s", "1");
-        EdgeInputFram.directedGraph.addEdge("2","s", "2");
-        EdgeInputFram.directedGraph.addEdge("5","1", "2");
-        EdgeInputFram.directedGraph.addEdge("*2","1", "t");
-        EdgeInputFram.directedGraph.addEdge("*3","2", "t");
-
-        
-        
-        EdgeInputFram.map.put("3", "s 1");
-        EdgeInputFram.map.put("2", "s 2");
-        EdgeInputFram.map.put("5", "1 2");
-        EdgeInputFram.map.put("*2", "1 t");
-        EdgeInputFram.map.put("*3", "2 t");
+//        Vector<String> vertices = new Vector<>();
+//        vertices.add("s");
+//        vertices.add("1");
+//        vertices.add("2");
+//        vertices.add("t");
+//
+//        
+//        VertexNameInputFram.g = new Graph(vertices);
+//        VertexNameInputFram.g.vertexNum = 4;
+//        
+//        
+//        VertexNameInputFram.g.addEdge("s", "1", 3);
+//        VertexNameInputFram.g.addEdge("s", "2", 2);
+//        VertexNameInputFram.g.addEdge("1", "2", 5);
+//        VertexNameInputFram.g.addEdge("1", "t", 2);
+//        VertexNameInputFram.g.addEdge("2", "t", 3);
+//
+//        
+//        EdgeInputFram.directedGraph.addEdge("3","s", "1");
+//        EdgeInputFram.directedGraph.addEdge("2","s", "2");
+//        EdgeInputFram.directedGraph.addEdge("5","1", "2");
+//        EdgeInputFram.directedGraph.addEdge("*2","1", "t");
+//        EdgeInputFram.directedGraph.addEdge("*3","2", "t");
+//
+//        
+//        
+//        EdgeInputFram.map.put("3", "s 1");
+//        EdgeInputFram.map.put("2", "s 2");
+//        EdgeInputFram.map.put("5", "1 2");
+//        EdgeInputFram.map.put("*2", "1 t");
+//        EdgeInputFram.map.put("*3", "2 t");
 
 
 
@@ -210,7 +210,7 @@ public class EdgeInputFram extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(28, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -381,8 +381,8 @@ public class EdgeInputFram extends javax.swing.JFrame {
             //frame.setLocationRelativeTo(null);
             //int lebar = this.getWidth()/2;
             //int tinggi = this.getHeight()/2;
-            int x = (Toolkit.getDefaultToolkit().getScreenSize().width/3)-250;
-            int y = (Toolkit.getDefaultToolkit().getScreenSize().height/2)-200;
+            int x = (Toolkit.getDefaultToolkit().getScreenSize().width/3)-500;
+            int y = (Toolkit.getDefaultToolkit().getScreenSize().height/2)-220;
             frame.setLocation(x, y);
 
 
