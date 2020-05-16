@@ -3,10 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Home/Documents/NetBeansProjects/Algorithms-Project/src/algorithms/project/ShortestPath.java</file>
-            <file>file:/C:/Users/Home/Documents/NetBeansProjects/Algorithms-Project/src/algorithms/project/Main.java</file>
-            <file>file:/C:/Users/Home/Documents/NetBeansProjects/Algorithms-Project/src/algorithms/project/MaximumFlow.java</file>
-            <file>file:/C:/Users/Home/Documents/NetBeansProjects/Algorithms-Project/src/algorithms/project/Graph.java</file>
+            <file>file:/C:/Users/Home/Documents/NetBeansProjects/sara/Algorithmes-Project-GUI/src/algorithms/project/MaximumOutFram.java</file>
+            <file>file:/C:/Users/Home/Documents/NetBeansProjects/sara/Algorithmes-Project-GUI/src/algorithms/project/MaximumFlow.java</file>
+            <file>file:/C:/Users/Home/Documents/NetBeansProjects/sara/Algorithmes-Project-GUI/src/algorithms/project/DijkstraOutFram.java</file>
+            <file>file:/C:/Users/Home/Documents/NetBeansProjects/sara/Algorithmes-Project-GUI/src/algorithms/project/EdgeInputFram.java</file>
+            <file>file:/C:/Users/Home/Documents/NetBeansProjects/sara/Algorithmes-Project-GUI/src/algorithms/project/ChooseFram.java</file>
+            <file>file:/C:/Users/Home/Documents/NetBeansProjects/sara/Algorithmes-Project-GUI/src/algorithms/project/Main.java</file>
         </group>
     </open-files>
 </project-private>
