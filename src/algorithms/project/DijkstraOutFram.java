@@ -29,7 +29,7 @@ public class DijkstraOutFram extends javax.swing.JFrame {
     /**
      * Creates new form OutPutFram
      */
-    DefaultTableModel model;
+    static DefaultTableModel model;
     public DijkstraOutFram() {
         initComponents();
         setLocationRelativeTo(null);
@@ -226,12 +226,16 @@ public class DijkstraOutFram extends javax.swing.JFrame {
         }
         vistedBool = false;
         if(count < ShortestPath.map.size()){
-            model.addRow(new Object[]{
-                ShortestPath.vertexNames.get(count+1),
-                ShortestPath.distance[count+1]
-        
-            });
+            
             displayStepByStep();
+            //System.out.println("suffix = "+suffix);
+//            if(suffix != null){
+//                model.addRow(new Object[]{
+//                    suffix,
+//                    ShortestPath.distance[ShortestPath.vertexNames.indexOf(suffix)]
+//
+//                });
+//            }
             count++;
             
         }
@@ -239,6 +243,7 @@ public class DijkstraOutFram extends javax.swing.JFrame {
             stepBystepBt.setText("Finished");
             stepBystepBt.setForeground(new Color(0,100,0));
             stepBystepBt.setEnabled(false);
+            count = 0;
         }
 
     }//GEN-LAST:event_stepBystepBtActionPerformed
@@ -276,12 +281,31 @@ public class DijkstraOutFram extends javax.swing.JFrame {
                             //String weight = s.replace("*", "");
                             //System.out.println(weight);
                             System.out.println("Map = "+EdgeInputFram.map.get(s));
+                            String edgeInitAndTerm = (String) EdgeInputFram.map.get(s);
                             System.out.println(ShortestPath.map.containsValue(EdgeInputFram.map.get(s)));
                             if(!visitedArr.contains(s) && !vistedBool){
                                 visitedArr.add(s);
                                 
                                 if (ShortestPath.map.containsValue(EdgeInputFram.map.get(s))){
                                     visitedArrBlue.add(s);
+                                   // System.out.println("intiTerm = "+intiTerm);
+                                    //intiTerm = (int) ShortestPath.map2.get(EdgeInputFram.map.get(s));
+                                    
+                                    System.out.println("edgeInitAndTerm = "+edgeInitAndTerm);
+
+                                    int spacePos = edgeInitAndTerm.indexOf(" ");
+                                    suffix = edgeInitAndTerm.substring(spacePos + 1, edgeInitAndTerm.length()); //Gets the terminal
+                                    
+                                   
+                                    
+                                    model.addRow(new Object[]{
+                                            suffix,
+                                            ShortestPath.distance[ShortestPath.vertexNames.indexOf(suffix)]
+
+                                     });
+            
+                                    
+                                    
                                     System.out.println("In Blue");
                                     vistedBool = true;
                                     //count++;
@@ -390,4 +414,6 @@ public class DijkstraOutFram extends javax.swing.JFrame {
     public static Vector<String> visitedArrGray ;
     public int count ;
     public static Boolean vistedBool;
+    public static int intiTerm ;
+    public static String suffix;
 }

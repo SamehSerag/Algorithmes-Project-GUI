@@ -38,7 +38,7 @@ public class EdgeInputFram extends javax.swing.JFrame {
     public EdgeInputFram() {
         initComponents();
         setLocationRelativeTo(null);
-        finishBt.setEnabled(false);
+        //finishBt.setEnabled(false);
         greenTx.setVisible(false);
         
 //        Vector<String> vertices = new Vector<>();
@@ -61,6 +61,39 @@ public class EdgeInputFram extends javax.swing.JFrame {
 //        EdgeInputFram.map.put("1", "a b");
 //        EdgeInputFram.map.put("10", "a c");
 //        EdgeInputFram.map.put("2", "b c");
+
+        Vector<String> vertices = new Vector<>();
+        vertices.add("a");
+        vertices.add("b");
+        vertices.add("c");
+        vertices.add("d");
+        //vertices.add("e");
+
+        
+        VertexNameInputFram.g = new Graph(vertices);
+        VertexNameInputFram.g.vertexNum = 4;
+        
+        
+        VertexNameInputFram.g.addEdge("a", "b", 3);
+        VertexNameInputFram.g.addEdge("a", "c", 1);
+        VertexNameInputFram.g.addEdge("c", "b", 7);
+        VertexNameInputFram.g.addEdge("c", "d", 2);
+        VertexNameInputFram.g.addEdge("b", "d", 5);
+        
+        EdgeInputFram.directedGraph.addEdge("3","a","b");
+        EdgeInputFram.directedGraph.addEdge("1","a","c");
+        EdgeInputFram.directedGraph.addEdge("7","c","b");
+        EdgeInputFram.directedGraph.addEdge("2","c","d");
+        EdgeInputFram.directedGraph.addEdge("5","b","d");
+
+        
+        EdgeInputFram.map.put("3", "a b");
+        EdgeInputFram.map.put("1", "a c");
+        EdgeInputFram.map.put("7", "c b");
+        EdgeInputFram.map.put("2", "c d");
+        EdgeInputFram.map.put("5", "b d");
+
+
 
 //        Vector<String> vertices = new Vector<>();
 //        vertices.add("s");

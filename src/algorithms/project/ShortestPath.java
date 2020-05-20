@@ -1,7 +1,9 @@
 package algorithms.project;
 
 import java.lang.*;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Vector;
 
@@ -11,6 +13,7 @@ public class ShortestPath {
     static Vector<String> vertexNames;
     int[][] steps;
     static Map map; 
+    static Map map2;
 
     int src;
 
@@ -20,7 +23,9 @@ public class ShortestPath {
         this.vertexNum = vertexNum;
         this.vertexNames = vertexNames;
         steps = new int [vertexNum][2];
-        map=new HashMap(); 
+        map=new HashMap();
+        map2=new HashMap(); 
+
     }
     ShortestPath(){}
 
@@ -90,7 +95,23 @@ public class ShortestPath {
             if (distance[i] == Integer.MAX_VALUE)
                 distance[i] = -1;
         }
-
+        map.forEach((k,v) -> map2.put(v, k));
+        
+        
+//        for (int i = 1; i < distance.length; i++) {
+//            for (int j = i; j > 0; j--) {
+//                if (distance[j] < distance [j - 1]) {
+//                 int temp = distance[j];
+//                 distance[j] = distance[j - 1];
+//                 distance[j - 1] = temp;
+//                 Collections.swap(vertexNames, j, j-1);
+//
+//                }
+//            }
+//        }
+        
+        
+        
         printDijkstra(distance);
         for (int i = 0; i < vertexNum; i++) {
             for (int j = 0; j < 2; j++) {
