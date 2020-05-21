@@ -62,7 +62,7 @@ public class EdgeInputFram extends javax.swing.JFrame {
 //        EdgeInputFram.map.put("10", "a c");
 //        EdgeInputFram.map.put("2", "b c");
 
-        Vector<String> vertices = new Vector<>();
+  /*      Vector<String> vertices = new Vector<>();
         vertices.add("a");
         vertices.add("b");
         vertices.add("c");
@@ -92,40 +92,40 @@ public class EdgeInputFram extends javax.swing.JFrame {
         EdgeInputFram.map.put("7", "c b");
         EdgeInputFram.map.put("2", "c d");
         EdgeInputFram.map.put("5", "b d");
+*/
 
 
+        Vector<String> vertices = new Vector<>();
+        vertices.add("s");
+        vertices.add("1");
+        vertices.add("2");
+        vertices.add("t");
 
-//        Vector<String> vertices = new Vector<>();
-//        vertices.add("s");
-//        vertices.add("1");
-//        vertices.add("2");
-//        vertices.add("t");
-//
-//        
-//        VertexNameInputFram.g = new Graph(vertices);
-//        VertexNameInputFram.g.vertexNum = 4;
-//        
-//        
-//        VertexNameInputFram.g.addEdge("s", "1", 3);
-//        VertexNameInputFram.g.addEdge("s", "2", 2);
-//        VertexNameInputFram.g.addEdge("1", "2", 5);
-//        VertexNameInputFram.g.addEdge("1", "t", 2);
-//        VertexNameInputFram.g.addEdge("2", "t", 3);
-//
-//        
-//        EdgeInputFram.directedGraph.addEdge("3","s", "1");
-//        EdgeInputFram.directedGraph.addEdge("2","s", "2");
-//        EdgeInputFram.directedGraph.addEdge("5","1", "2");
-//        EdgeInputFram.directedGraph.addEdge("*2","1", "t");
-//        EdgeInputFram.directedGraph.addEdge("*3","2", "t");
-//
-//        
-//        
-//        EdgeInputFram.map.put("3", "s 1");
-//        EdgeInputFram.map.put("2", "s 2");
-//        EdgeInputFram.map.put("5", "1 2");
-//        EdgeInputFram.map.put("*2", "1 t");
-//        EdgeInputFram.map.put("*3", "2 t");
+        
+        VertexNameInputFram.g = new Graph(vertices);
+        VertexNameInputFram.g.vertexNum = 4;
+        
+        
+        VertexNameInputFram.g.addEdge("s", "1", 3);
+        VertexNameInputFram.g.addEdge("s", "2", 2);
+        VertexNameInputFram.g.addEdge("1", "2", 5);
+        VertexNameInputFram.g.addEdge("1", "t", 2);
+        VertexNameInputFram.g.addEdge("2", "t", 3);
+
+        
+        EdgeInputFram.directedGraph.addEdge("3","s", "1");
+        EdgeInputFram.directedGraph.addEdge("2","s", "2");
+        EdgeInputFram.directedGraph.addEdge("5","1", "2");
+        EdgeInputFram.directedGraph.addEdge("*2","1", "t");
+        EdgeInputFram.directedGraph.addEdge("*3","2", "t");
+
+        
+        
+        EdgeInputFram.map.put("3", "s 1");
+        EdgeInputFram.map.put("2", "s 2");
+        EdgeInputFram.map.put("5", "1 2");
+        EdgeInputFram.map.put("*2", "1 t");
+        EdgeInputFram.map.put("*3", "2 t");
 
 
 
@@ -168,28 +168,33 @@ public class EdgeInputFram extends javax.swing.JFrame {
         bluTx2 = new javax.swing.JLabel();
         enterTerminalLab1 = new javax.swing.JLabel();
         weightTx = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Lucida Calligraphy", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Here to Enter Edges");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, -1, -1));
 
         finishBt.setFont(new java.awt.Font("Lucida Calligraphy", 1, 18)); // NOI18N
-        finishBt.setForeground(new java.awt.Color(255, 51, 51));
+        finishBt.setForeground(new java.awt.Color(200, 0, 0));
         finishBt.setText("Finish");
         finishBt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 finishBtActionPerformed(evt);
             }
         });
+        getContentPane().add(finishBt, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 280, 133, -1));
 
         enterInitialLab.setFont(new java.awt.Font("Lucida Calligraphy", 1, 18)); // NOI18N
         enterInitialLab.setText("Initial Vertex ");
+        getContentPane().add(enterInitialLab, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 96, -1, -1));
 
         enterTerminalLab.setFont(new java.awt.Font("Lucida Calligraphy", 1, 18)); // NOI18N
         enterTerminalLab.setText("Terminal Vertex");
+        getContentPane().add(enterTerminalLab, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 90, -1, -1));
 
         initialVertex.setFont(new java.awt.Font("Lucida Calligraphy", 1, 18)); // NOI18N
         initialVertex.addActionListener(new java.awt.event.ActionListener() {
@@ -197,6 +202,7 @@ public class EdgeInputFram extends javax.swing.JFrame {
                 initialVertexActionPerformed(evt);
             }
         });
+        getContentPane().add(initialVertex, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 139, 140, -1));
 
         terminalVertex.setFont(new java.awt.Font("Lucida Calligraphy", 1, 18)); // NOI18N
         terminalVertex.addActionListener(new java.awt.event.ActionListener() {
@@ -204,6 +210,7 @@ public class EdgeInputFram extends javax.swing.JFrame {
                 terminalVertexActionPerformed(evt);
             }
         });
+        getContentPane().add(terminalVertex, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 162, -1));
 
         enterEdgeBt.setFont(new java.awt.Font("Lucida Calligraphy", 1, 18)); // NOI18N
         enterEdgeBt.setText("Add Edge ");
@@ -212,20 +219,27 @@ public class EdgeInputFram extends javax.swing.JFrame {
                 enterEdgeBtActionPerformed(evt);
             }
         });
+        getContentPane().add(enterEdgeBt, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 280, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(417, 225, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Lucida Calligraphy", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(200, 0, 0));
         jLabel3.setText("After Add All Edges Press Finish");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 230, 368, -1));
 
         greenTx.setFont(new java.awt.Font("Lucida Calligraphy", 1, 18)); // NOI18N
-        greenTx.setForeground(new java.awt.Color(0, 204, 0));
+        greenTx.setForeground(new java.awt.Color(0, 0, 153));
         greenTx.setText("Edge 1 Added Successfully,You Can Add More");
+        getContentPane().add(greenTx, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 190, -1, 31));
 
         bluTx2.setFont(new java.awt.Font("Lucida Calligraphy", 1, 18)); // NOI18N
-        bluTx2.setForeground(new java.awt.Color(0, 0, 255));
+        bluTx2.setForeground(new java.awt.Color(0, 0, 153));
         bluTx2.setText("Enter Edge 1");
+        getContentPane().add(bluTx2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 50, -1, -1));
 
         enterTerminalLab1.setFont(new java.awt.Font("Lucida Calligraphy", 1, 18)); // NOI18N
         enterTerminalLab1.setText("Edge Weight");
+        getContentPane().add(enterTerminalLab1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 90, -1, -1));
 
         weightTx.setFont(new java.awt.Font("Lucida Calligraphy", 1, 18)); // NOI18N
         weightTx.addActionListener(new java.awt.event.ActionListener() {
@@ -233,88 +247,10 @@ public class EdgeInputFram extends javax.swing.JFrame {
                 weightTxActionPerformed(evt);
             }
         });
+        getContentPane().add(weightTx, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 140, 121, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(417, 417, 417)
-                .addComponent(jLabel2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(enterInitialLab)
-                            .addComponent(initialVertex, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(37, 37, 37)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(jLabel1)
-                            .addComponent(bluTx2)
-                            .addComponent(enterTerminalLab)
-                            .addComponent(terminalVertex, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(38, 38, 38)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(weightTx, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(enterTerminalLab1, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addGap(28, 28, 28))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(greenTx)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGap(55, 55, 55)
-                                .addComponent(enterEdgeBt)
-                                .addGap(70, 70, 70)
-                                .addComponent(finishBt, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(110, 110, 110))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(162, 162, 162))))
-        );
-
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {enterTerminalLab, terminalVertex});
-
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {enterInitialLab, initialVertex});
-
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {enterEdgeBt, finishBt});
-
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(9, 9, 9)
-                .addComponent(bluTx2)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(enterInitialLab)
-                    .addComponent(enterTerminalLab)
-                    .addComponent(enterTerminalLab1))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(initialVertex, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(terminalVertex, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(weightTx, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(greenTx, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3)
-                .addGap(24, 24, 24)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(enterEdgeBt)
-                    .addComponent(finishBt, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
-
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {enterInitialLab, enterTerminalLab, enterTerminalLab1});
-
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {initialVertex, terminalVertex, weightTx});
-
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {enterEdgeBt, finishBt});
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/algorithms/project/source/abstract-geometric-shape-connection-with-3d-cubes-background_42705-105.jpg"))); // NOI18N
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 330));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -560,6 +496,7 @@ public class EdgeInputFram extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField terminalVertex;
     private javax.swing.JTextField weightTx;
     // End of variables declaration//GEN-END:variables

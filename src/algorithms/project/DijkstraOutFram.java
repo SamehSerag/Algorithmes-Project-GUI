@@ -78,11 +78,13 @@ public class DijkstraOutFram extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         stepBystepBt1 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(450, 0));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tableData.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         tableData.setModel(new javax.swing.table.DefaultTableModel(
@@ -98,17 +100,21 @@ public class DijkstraOutFram extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tableData);
 
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 163, 413, 124));
+
         jLabel1.setFont(new java.awt.Font("Lucida Calligraphy", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(153, 204, 0));
         jLabel1.setText("The Shortest Path From Source to All Verteces");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, -1, -1));
 
         closeBt.setFont(new java.awt.Font("Lucida Calligraphy", 1, 15)); // NOI18N
+        closeBt.setForeground(new java.awt.Color(200, 0, 0));
         closeBt.setText("Exit");
         closeBt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 closeBtActionPerformed(evt);
             }
         });
+        getContentPane().add(closeBt, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 320, 113, -1));
 
         backBt.setFont(new java.awt.Font("Lucida Calligraphy", 1, 15)); // NOI18N
         backBt.setText("Back");
@@ -117,6 +123,7 @@ public class DijkstraOutFram extends javax.swing.JFrame {
                 backBtActionPerformed(evt);
             }
         });
+        getContentPane().add(backBt, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 320, 113, -1));
 
         stepBystepBt.setFont(new java.awt.Font("Lucida Calligraphy", 1, 15)); // NOI18N
         stepBystepBt.setForeground(new java.awt.Color(0, 0, 255));
@@ -126,14 +133,17 @@ public class DijkstraOutFram extends javax.swing.JFrame {
                 stepBystepBtActionPerformed(evt);
             }
         });
+        getContentPane().add(stepBystepBt, new org.netbeans.lib.awtextra.AbsoluteConstraints(468, 105, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Lucida Calligraphy", 1, 15)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 153));
         jLabel2.setText("To See Result step by step press Next Step One by One");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 105, -1, 29));
 
         jLabel3.setFont(new java.awt.Font("Lucida Calligraphy", 1, 15)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 153));
         jLabel3.setText("To See The Whole Result press Result");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 65, -1, 29));
 
         stepBystepBt1.setFont(new java.awt.Font("Lucida Calligraphy", 1, 15)); // NOI18N
         stepBystepBt1.setForeground(new java.awt.Color(0, 0, 255));
@@ -143,59 +153,10 @@ public class DijkstraOutFram extends javax.swing.JFrame {
                 stepBystepBt1ActionPerformed(evt);
             }
         });
+        getContentPane().add(stepBystepBt1, new org.netbeans.lib.awtextra.AbsoluteConstraints(468, 65, 113, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(38, 38, 38))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(stepBystepBt))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(stepBystepBt1)
-                        .addGap(16, 16, 16)))
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(backBt)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(closeBt, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(112, 112, 112))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(stepBystepBt1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(stepBystepBt))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(closeBt)
-                    .addComponent(backBt))
-                .addContainerGap())
-        );
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/algorithms/project/source/abstract-geometric-shape-connection-with-3d-cubes-background_42705-105.jpg"))); // NOI18N
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 360));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -404,6 +365,7 @@ public class DijkstraOutFram extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton stepBystepBt;
     private javax.swing.JButton stepBystepBt1;

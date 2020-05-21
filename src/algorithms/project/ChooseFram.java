@@ -96,30 +96,39 @@ public class ChooseFram extends javax.swing.JFrame {
         destTx = new javax.swing.JTextField();
         addBt = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Lucida Calligraphy", 1, 18)); // NOI18N
         jLabel1.setText("Please Choose Which Algorithm You Want To Apply ");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 21, -1, -1));
 
         jButton1.setFont(new java.awt.Font("Lucida Calligraphy", 1, 15)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(0, 0, 255));
         jButton1.setText("Dijkstra's Algorithm");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 82, -1, -1));
 
         jButton2.setFont(new java.awt.Font("Lucida Calligraphy", 1, 15)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(0, 0, 255));
         jButton2.setText("Maximum Flow");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(329, 82, 199, -1));
 
         destLab.setFont(new java.awt.Font("Lucida Calligraphy", 1, 18)); // NOI18N
+        destLab.setForeground(new java.awt.Color(0, 0, 153));
         destLab.setText("Please Enter Destination Name");
+        getContentPane().add(destLab, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 197, -1, 31));
 
         sourceTx.setFont(new java.awt.Font("Lucida Calligraphy", 1, 18)); // NOI18N
         sourceTx.addActionListener(new java.awt.event.ActionListener() {
@@ -127,9 +136,12 @@ public class ChooseFram extends javax.swing.JFrame {
                 sourceTxActionPerformed(evt);
             }
         });
+        getContentPane().add(sourceTx, new org.netbeans.lib.awtextra.AbsoluteConstraints(433, 143, 95, -1));
 
         sourceLab.setFont(new java.awt.Font("Lucida Calligraphy", 1, 18)); // NOI18N
+        sourceLab.setForeground(new java.awt.Color(0, 0, 153));
         sourceLab.setText("Please Enter Source Name");
+        getContentPane().add(sourceLab, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 143, -1, 31));
 
         destTx.setFont(new java.awt.Font("Lucida Calligraphy", 1, 18)); // NOI18N
         destTx.addActionListener(new java.awt.event.ActionListener() {
@@ -137,6 +149,7 @@ public class ChooseFram extends javax.swing.JFrame {
                 destTxActionPerformed(evt);
             }
         });
+        getContentPane().add(destTx, new org.netbeans.lib.awtextra.AbsoluteConstraints(433, 197, 95, -1));
 
         addBt.setFont(new java.awt.Font("Lucida Calligraphy", 1, 15)); // NOI18N
         addBt.setText("Add");
@@ -145,66 +158,11 @@ public class ChooseFram extends javax.swing.JFrame {
                 addBtActionPerformed(evt);
             }
         });
+        getContentPane().add(addBt, new org.netbeans.lib.awtextra.AbsoluteConstraints(218, 258, 108, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(344, 197, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(addBt, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(12, 12, 12)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(destLab)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel2)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(destTx, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(sourceLab)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(sourceTx, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)))
-                .addGap(38, 38, 38))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addGap(50, 50, 50)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(sourceTx, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(sourceLab))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(destLab)
-                            .addComponent(jLabel2))
-                        .addGap(41, 41, 41))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(destTx, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addComponent(addBt)
-                .addContainerGap())
-        );
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/algorithms/project/source/abstract-geometric-shape-connection-with-3d-cubes-background_42705-105.jpg"))); // NOI18N
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 560, 310));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -462,6 +420,7 @@ public class ChooseFram extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
     public javax.swing.JLabel sourceLab;
     public javax.swing.JTextField sourceTx;
     // End of variables declaration//GEN-END:variables
