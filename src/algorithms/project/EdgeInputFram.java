@@ -94,7 +94,7 @@ public class EdgeInputFram extends javax.swing.JFrame {
         EdgeInputFram.map.put("5", "b d");
 */
 
-
+/*
         Vector<String> vertices = new Vector<>();
         vertices.add("s");
         vertices.add("1");
@@ -127,19 +127,19 @@ public class EdgeInputFram extends javax.swing.JFrame {
         EdgeInputFram.map.put("*2", "1 t");
         EdgeInputFram.map.put("*3", "2 t");
 
-
+*/
 
         
         //sheel el comment
         
-//        Vector<String> vertices = new Vector<>();
-//        vertices = VertexNameInputFram.g.getVertices();
-//
-//       
-//            for (int i = 0; i < vertices.size(); i++) {
-//                directedGraph.addVertex(vertices.get(i));
-//            }
-//        
+        Vector<String> vertices = new Vector<>();
+        vertices = VertexNameInputFram.g.getVertices();
+
+       
+            for (int i = 0; i < vertices.size(); i++) {
+                directedGraph.addVertex(vertices.get(i));
+            }
+        
        // System.out.println(g.getVertices());
 
 

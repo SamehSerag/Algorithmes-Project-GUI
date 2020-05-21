@@ -3,7 +3,7 @@
   <dontWrapJar>false</dontWrapJar>
   <headerType>gui</headerType>
   <jar>C:\Users\Home\Documents\NetBeansProjects\sara\Algorithmes-Project-GUI\dist\Algorithms-Project.jar</jar>
-  <outfile>C:\Users\Home\Documents\NetBeansProjects\sara\Algorithmes-Project-GUI\dist\Project.exe</outfile>
+  <outfile>C:\Users\Home\Documents\NetBeansProjects\sara\Algorithmes-Project-GUI\dist\Run-Project.exe</outfile>
   <errTitle></errTitle>
   <cmdLine></cmdLine>
   <chdir>.</chdir>

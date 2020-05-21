@@ -158,11 +158,11 @@ public class ChooseFram extends javax.swing.JFrame {
                 addBtActionPerformed(evt);
             }
         });
-        getContentPane().add(addBt, new org.netbeans.lib.awtextra.AbsoluteConstraints(218, 258, 108, -1));
+        getContentPane().add(addBt, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 260, 108, -1));
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(344, 197, -1, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/algorithms/project/source/abstract-geometric-shape-connection-with-3d-cubes-background_42705-105.jpg"))); // NOI18N
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 560, 310));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 330));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
