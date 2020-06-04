@@ -22,6 +22,8 @@ public class VertexNameInputFram extends javax.swing.JFrame {
         initComponents();
        // vn = MainFram.verticesNumber;
         setLocationRelativeTo(null);
+        finish.setEnabled(false);
+
 
     }
 
@@ -46,7 +48,7 @@ public class VertexNameInputFram extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Lucida Calligraphy", 1, 18)); // NOI18N
         jLabel1.setText("Enter name of vertex 1");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(67, 11, 232, 31));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(67, 11, 270, 31));
 
         vertexNametx.setFont(new java.awt.Font("Lucida Calligraphy", 1, 18)); // NOI18N
         vertexNametx.addActionListener(new java.awt.event.ActionListener() {
@@ -81,7 +83,7 @@ public class VertexNameInputFram extends javax.swing.JFrame {
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 103, -1, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/algorithms/project/source/abstract-geometric-shape-connection-with-3d-cubes-background_42705-105.jpg"))); // NOI18N
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 370, 200));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 220));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -92,7 +94,12 @@ public class VertexNameInputFram extends javax.swing.JFrame {
 
     private void addVertexActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addVertexActionPerformed
         // TODO add your handling code here:
-            if(!vertices.contains(vertexNametx.getText())){
+            if (vertexNametx.getText().equals("")){
+                JOptionPane.showMessageDialog(this, "Please Enter Vertex name",  
+                "ERROR", JOptionPane.ERROR_MESSAGE); 
+
+            }
+            else if(!vertices.contains(vertexNametx.getText())){
                 //if(vn != 0){
                     vertices.add(vertexNametx.getText());
                     vertexNametx.setText("");
@@ -108,7 +115,9 @@ public class VertexNameInputFram extends javax.swing.JFrame {
               //  }
                 counter++;
                 jLabel1.setText("Enter name of vertex "+ counter);
-                }
+                finish.setEnabled(true);
+
+            }
             else{
                 JOptionPane.showMessageDialog(this, "You must enter name not exist here\n "+ vertices,  
            "ERROR", JOptionPane.ERROR_MESSAGE); 

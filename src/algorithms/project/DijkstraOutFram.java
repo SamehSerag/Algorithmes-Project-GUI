@@ -243,13 +243,18 @@ public class DijkstraOutFram extends javax.swing.JFrame {
                             //System.out.println(weight);
                             System.out.println("Map = "+EdgeInputFram.map.get(s));
                             String edgeInitAndTerm = (String) EdgeInputFram.map.get(s);
-                            System.out.println(ShortestPath.map.containsValue(EdgeInputFram.map.get(s)));
-                            if(!visitedArr.contains(s) && !vistedBool){
+                            //System.out.println(ShortestPath.map.containsValue(EdgeInputFram.map.get(s)));
+                            //System.out.println("ChooseFram = " + edgeInitAndTerm+"try");
+                            //System.out.println("befor if = "+ edgeInitAndTerm ==(String) ChooseFram.shortPath.arrangedEdges[1]);
+                            if(!visitedArr.contains(s) && !vistedBool 
+                                    && edgeInitAndTerm.equals(ChooseFram.shortPath.arrangedEdges[count])){
                                 visitedArr.add(s);
                                 
+                                System.out.println("in frist if ");
+
                                 if (ShortestPath.map.containsValue(EdgeInputFram.map.get(s))){
                                     visitedArrBlue.add(s);
-                                   // System.out.println("intiTerm = "+intiTerm);
+                                    System.out.println("in second if ");
                                     //intiTerm = (int) ShortestPath.map2.get(EdgeInputFram.map.get(s));
                                     
                                     System.out.println("edgeInitAndTerm = "+edgeInitAndTerm);
@@ -261,7 +266,7 @@ public class DijkstraOutFram extends javax.swing.JFrame {
                                     
                                     model.addRow(new Object[]{
                                             suffix,
-                                            ShortestPath.distance[ShortestPath.vertexNames.indexOf(suffix)]
+                                            ShortestPath.distance[count]
 
                                      });
             
@@ -374,7 +379,7 @@ public class DijkstraOutFram extends javax.swing.JFrame {
     public static Vector<String> visitedArr ;
     public static Vector<String> visitedArrBlue ;
     public static Vector<String> visitedArrGray ;
-    public int count ;
+    public static int count ;
     public static Boolean vistedBool;
     public static int intiTerm ;
     public static String suffix;

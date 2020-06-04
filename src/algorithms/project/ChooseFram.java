@@ -290,7 +290,7 @@ public class ChooseFram extends javax.swing.JFrame {
                    "ERROR", JOptionPane.ERROR_MESSAGE); 
                 }
                 else{
-                    ShortestPath shortPath = new ShortestPath(VertexNameInputFram.g.vertexNum,VertexNameInputFram.g.vertices);
+                    shortPath = new ShortestPath(VertexNameInputFram.g.vertexNum,VertexNameInputFram.g.vertices);
                     shortPath.dijkstra(VertexNameInputFram.g.mat,
                           VertexNameInputFram.g.vertices.indexOf(sourceTx.getText()) );
                     
@@ -430,6 +430,6 @@ public class ChooseFram extends javax.swing.JFrame {
     public static String src;
     public static int maximumflowNum ;
     public static MaximumFlow maximumFlow;
-
+    public static ShortestPath shortPath ;
 
 }

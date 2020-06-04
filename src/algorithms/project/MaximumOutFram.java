@@ -161,7 +161,7 @@ public class MaximumOutFram extends javax.swing.JFrame {
         getContentPane().add(resultBt, new org.netbeans.lib.awtextra.AbsoluteConstraints(468, 65, 113, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/algorithms/project/source/abstract-geometric-shape-connection-with-3d-cubes-background_42705-105.jpg"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 360));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 610, 370));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

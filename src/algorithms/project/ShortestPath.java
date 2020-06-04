@@ -1,19 +1,23 @@
 package algorithms.project;
 
 import java.lang.*;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.TreeMap;
 import java.util.Vector;
 
 public class ShortestPath {
     int vertexNum ;
     static int[] distance;
     static Vector<String> vertexNames;
+    String[] arrangedEdges ;
     int[][] steps;
     static Map map; 
     static Map map2;
+    ArrayList<String> sortedKeys;
 
     int src;
 
@@ -25,7 +29,7 @@ public class ShortestPath {
         steps = new int [vertexNum][2];
         map=new HashMap();
         map2=new HashMap(); 
-
+       // arrangedEdges =  new Vector<>() ;
     }
     ShortestPath(){}
 
@@ -48,10 +52,33 @@ public class ShortestPath {
         return minIndex;
     }
 
-
+    public void sortbykey() 
+    { 
+       sortedKeys = new ArrayList<String>(map.keySet()); 
+          
+        Collections.sort(sortedKeys);     
+    } 
+    public void sortDist(){
+        for (int i = 1; i < distance.length; i++) {
+            for (int j = i; j > 0; j--) {
+                if (distance[j] < distance [j - 1]) {
+                    int temp = distance[j];
+                    distance[j] = distance[j - 1];
+                    distance[j - 1] = temp;
+                    
+                    String temp2 = arrangedEdges[j];
+                    arrangedEdges[j]=  arrangedEdges[j-1];
+                    arrangedEdges[j-1] = temp2;
+                }
+            }
+         }
+    }
+      
+    
     int[] dijkstra(int[][] graphMatrix, int src)
     {
         distance = new int[vertexNum];
+        arrangedEdges = new String[vertexNum];
         this.src = src;
         Boolean[] spSet = new Boolean[vertexNum];
 
@@ -77,11 +104,19 @@ public class ShortestPath {
 //                    s+= Integer.toString(j);
                     String s = vertexNames.get(i) +" "+vertexNames.get(j);
                     map.put(j, s);
-                    System.out.println(map);
+                    
+                    System.out.println("Edge = "+ s);
+                    
+                    System.out.println("Arranged Edges befor if = "+ arrangedEdges );
+//                    if(arrangedEdges.){
+//                        arrangedEdges.remove(s);   
+//                    }
+//                    arrangedEdges.add(s);
+                       arrangedEdges[j] = s;
                           
-                    System.out.println("index = " + j);
+//                    System.out.println("index = " + j);
                     System.out.println("Dis = " + distance[j]);
-                    System.out.println(i +" "+j);
+//                    System.out.println(i +" "+j);
 
                 }
                // else
@@ -113,6 +148,12 @@ public class ShortestPath {
         
         
         printDijkstra(distance);
+        sortDist();
+        for (int i = 0; i < distance.length; i++) {
+           System.out.print(arrangedEdges[i] +"      "+ distance[i] + "  ");
+
+        }
+        System.out.println("\nArranged Edges = "+ arrangedEdges );
         for (int i = 0; i < vertexNum; i++) {
             for (int j = 0; j < 2; j++) {
                 System.out.print(steps[i][j]);
