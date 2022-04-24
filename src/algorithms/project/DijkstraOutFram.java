@@ -15,6 +15,7 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Paint;
 import java.awt.Stroke;
+import java.awt.event.WindowEvent;
 import java.util.Vector;
 import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
@@ -69,6 +70,7 @@ public class DijkstraOutFram extends javax.swing.JFrame {
     private void initComponents() {
 
         jButton1 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableData = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
@@ -78,9 +80,13 @@ public class DijkstraOutFram extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         stepBystepBt1 = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         jButton1.setText("jButton1");
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/algorithms/project/source/abstract-geometric-shape-connection-with-3d-cubes-background_42705-105.jpg"))); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(450, 0));
@@ -117,7 +123,7 @@ public class DijkstraOutFram extends javax.swing.JFrame {
         getContentPane().add(closeBt, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 320, 113, -1));
 
         backBt.setFont(new java.awt.Font("Lucida Calligraphy", 1, 15)); // NOI18N
-        backBt.setText("Back");
+        backBt.setText("Previous");
         backBt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backBtActionPerformed(evt);
@@ -137,7 +143,7 @@ public class DijkstraOutFram extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Lucida Calligraphy", 1, 15)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 153));
-        jLabel2.setText("To See Result step by step press Next Step One by One");
+        jLabel2.setText("To See Result step by step press Next Step");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 105, -1, 29));
 
         jLabel3.setFont(new java.awt.Font("Lucida Calligraphy", 1, 15)); // NOI18N
@@ -155,8 +161,21 @@ public class DijkstraOutFram extends javax.swing.JFrame {
         });
         getContentPane().add(stepBystepBt1, new org.netbeans.lib.awtextra.AbsoluteConstraints(468, 65, 113, -1));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/algorithms/project/source/abstract-geometric-shape-connection-with-3d-cubes-background_42705-105.jpg"))); // NOI18N
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 360));
+        jButton2.setFont(new java.awt.Font("Lucida Calligraphy", 1, 14)); // NOI18N
+        jButton2.setText("New Input");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 320, 130, 30));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/algorithms/project/source/abstract-geometric-shape-connection-with-3d-cubes-background_42705-105.jpg"))); // NOI18N
+        jLabel5.setText("one by one");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 360));
+
+        jLabel6.setText("jLabel6");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -227,14 +246,42 @@ public class DijkstraOutFram extends javax.swing.JFrame {
         ChooseFram.displayDijkatra();
         
         clearTable();
-        for (int i = 0; i <ShortestPath.vertexNames.size() ; i++) {
+        model.addRow(new Object[]{
+                ShortestPath.vertexNames.get(0),
+                ShortestPath.distance[0]
+        
+        });
+        for (int i = 1; i <ShortestPath.arrangedEdges.length ; i++) {
+            String str = (String) ShortestPath.arrangedEdges[i];
+            System.out.println("Str = " + str);
+            int spacePos2 = str.indexOf(" ");
+            String suffix2 = str.substring(spacePos2 + 1, str.length()); //Gets the terminal
+                                    
             model.addRow(new Object[]{
-                ShortestPath.vertexNames.get(i),
+                //ShortestPath.vertexNames.get(i),
+                //ShortestPath.arrangedEdges[i],
+                suffix2,
                 ShortestPath.distance[i]
         
             });
        }
     }//GEN-LAST:event_stepBystepBt1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        
+        //System.exit(0);        
+        StartFrame stf = new StartFrame();
+        stf.setVisible(true);
+        //frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
+
+        
+        //EdgeInputFram.frame.setVisible(false);
+        EdgeInputFram.frame.dispose();
+        frame.dispose();
+        super.setVisible(false);
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
     public static void displayStepByStep(){
         Transformer<String, Paint> edgePaint = new Transformer<String, Paint>() {    
                     @Override
@@ -243,16 +290,21 @@ public class DijkstraOutFram extends javax.swing.JFrame {
                             //System.out.println(weight);
                             System.out.println("Map = "+EdgeInputFram.map.get(s));
                             String edgeInitAndTerm = (String) EdgeInputFram.map.get(s);
+                            String edgeInitAndTerm2 = (String) EdgeInputFram.map2.get(s);
+
                             //System.out.println(ShortestPath.map.containsValue(EdgeInputFram.map.get(s)));
                             //System.out.println("ChooseFram = " + edgeInitAndTerm+"try");
                             //System.out.println("befor if = "+ edgeInitAndTerm ==(String) ChooseFram.shortPath.arrangedEdges[1]);
                             if(!visitedArr.contains(s) && !vistedBool 
-                                    && edgeInitAndTerm.equals(ChooseFram.shortPath.arrangedEdges[count])){
+                                    && ( edgeInitAndTerm.equals(ChooseFram.shortPath.arrangedEdges[count]) ||
+                                    edgeInitAndTerm2.equals(ChooseFram.shortPath.arrangedEdges[count]))
+                                    ){
                                 visitedArr.add(s);
                                 
                                 System.out.println("in frist if ");
 
-                                if (ShortestPath.map.containsValue(EdgeInputFram.map.get(s))){
+                                if (ShortestPath.map.containsValue(EdgeInputFram.map.get(s))||
+                                      ShortestPath.map.containsValue(EdgeInputFram.map2.get(s))){
                                     visitedArrBlue.add(s);
                                     System.out.println("in second if ");
                                     //intiTerm = (int) ShortestPath.map2.get(EdgeInputFram.map.get(s));
@@ -367,10 +419,13 @@ public class DijkstraOutFram extends javax.swing.JFrame {
     private javax.swing.JButton backBt;
     private javax.swing.JButton closeBt;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton stepBystepBt;
     private javax.swing.JButton stepBystepBt1;

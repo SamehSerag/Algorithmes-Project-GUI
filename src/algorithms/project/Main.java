@@ -20,6 +20,7 @@ public class Main {
             vertices.add(vertixName);
         }
         graph = new Graph(vertices);
+        graph.setDirected(false);
         System.out.print("Enter num of Edge :");
         int numEdge = input.nextInt();
         for(int i = 0 ; i < numEdge ; i++) {

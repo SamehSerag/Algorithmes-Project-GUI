@@ -338,7 +338,8 @@ public class ChooseFram extends javax.swing.JFrame {
                             System.out.println("Map = "+EdgeInputFram.map.get(s));
                             System.out.println(ShortestPath.map.containsValue(EdgeInputFram.map.get(s)));
 
-                             if (ShortestPath.map.containsValue(EdgeInputFram.map.get(s))){   
+                             if (ShortestPath.map.containsValue(EdgeInputFram.map.get(s)) || 
+                                  ShortestPath.map.containsValue(EdgeInputFram.map2.get(s))){   
      
                                  return Color.BLUE;
                              }

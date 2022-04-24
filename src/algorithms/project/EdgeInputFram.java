@@ -62,6 +62,42 @@ public class EdgeInputFram extends javax.swing.JFrame {
 //        EdgeInputFram.map.put("10", "a c");
 //        EdgeInputFram.map.put("2", "b c");
 
+//        Vector<String> vertices = new Vector<>();
+//        vertices.add("s");
+//        vertices.add("t");
+//        vertices.add("1");
+//        vertices.add("2");
+//        
+//        VertexNameInputFram.g = new Graph(vertices);
+//        VertexNameInputFram.g.vertexNum = 4;
+//        VertexNameInputFram.g.setDirected(false);
+//        
+//        
+//        VertexNameInputFram.g.addEdge("s", "1", 3);
+//        VertexNameInputFram.g.addEdge("s", "2", 2);
+//        VertexNameInputFram.g.addEdge("1", "2", 5);
+//        VertexNameInputFram.g.addEdge("1", "t", 3);
+//        VertexNameInputFram.g.addEdge("2", "t", 3);
+//        
+//        EdgeInputFram.directedGraph.addEdge("3","s","1");
+//        EdgeInputFram.directedGraph.addEdge("2","s","2");
+//        EdgeInputFram.directedGraph.addEdge("5","1","2");
+//        EdgeInputFram.directedGraph.addEdge("*3","1","t");
+//        EdgeInputFram.directedGraph.addEdge("**3","2","t");
+//        
+//        EdgeInputFram.unDirectedGraph.addEdge("3","s","1");
+//        EdgeInputFram.unDirectedGraph.addEdge("2","s","2");
+//        EdgeInputFram.unDirectedGraph.addEdge("5","1","2");
+//        EdgeInputFram.unDirectedGraph.addEdge("*3","1","t");
+//        EdgeInputFram.unDirectedGraph.addEdge("**3","2","t");
+//        
+//        EdgeInputFram.map.put("3", "s 1");
+//        EdgeInputFram.map.put("2", "s 2");
+//        EdgeInputFram.map.put("5", "1 2");
+//        EdgeInputFram.map.put("*3", "1 t");
+//        EdgeInputFram.map.put("**3", "2 t");
+
+
   /*      Vector<String> vertices = new Vector<>();
         vertices.add("a");
         vertices.add("b");
@@ -146,11 +182,17 @@ public class EdgeInputFram extends javax.swing.JFrame {
         
         Vector<String> vertices = new Vector<>();
         vertices = VertexNameInputFram.g.getVertices();
-
-       
+        
+        if(VertexNameInputFram.g.directed == true){
             for (int i = 0; i < vertices.size(); i++) {
                 directedGraph.addVertex(vertices.get(i));
             }
+        }
+        else{
+            for (int i = 0; i < vertices.size(); i++) {
+                unDirectedGraph.addVertex(vertices.get(i));
+            }
+        }
         
        // System.out.println(g.getVertices());
 
@@ -280,6 +322,7 @@ public class EdgeInputFram extends javax.swing.JFrame {
 
             int counter = 1;
             edges = VertexNameInputFram.g.getEdges();
+            System.out.println("Edges Size = " + edges.size());
             for (int i = 0; i < edges.size(); i++) {
                
                 String src = String.valueOf(edges.get(i).initial);
@@ -291,10 +334,16 @@ public class EdgeInputFram extends javax.swing.JFrame {
                 edgeNamesArr.add(weight);
                 System.out.println("edges = " + edges.get(i).initial +" " +edges.get(i).terminate
                        +" "+edges.get(i).weight );
-                directedGraph.addEdge(weight,src,dest);
+                //sheet el comment
+                if(VertexNameInputFram.g.directed == true)
+                    directedGraph.addEdge(weight,src,dest);
+                else
+                    unDirectedGraph.addEdge(weight,src,dest);
                 
                 String mapValue = edges.get(i).initial + " " + edges.get(i).terminate;
+                String mapValue2 = edges.get(i).terminate + " " + edges.get(i).initial;
                 map.put(weight, mapValue);
+                map2.put(weight, mapValue2);
                 
                 counter++;
                 
@@ -315,10 +364,16 @@ public class EdgeInputFram extends javax.swing.JFrame {
      //   }
     }//GEN-LAST:event_finishBtActionPerformed
     public static void displayGraph(){
-        vs =
-               new VisualizationImageServer<String, String>(new CircleLayout<String, String>(EdgeInputFram.directedGraph), 
-                       new Dimension(200, 200));
-
+        if(VertexNameInputFram.g.directed == true){
+            vs =
+                   new VisualizationImageServer<String, String>(new CircleLayout<String, String>(EdgeInputFram.directedGraph), 
+                           new Dimension(200, 200));
+        }
+        else{
+            vs =
+                   new VisualizationImageServer<String, String>(new CircleLayout<String, String>(EdgeInputFram.unDirectedGraph), 
+                           new Dimension(200, 200));
+        }
            
             
             Transformer<String, String> transformer2 = new Transformer<String, String>() {
@@ -513,11 +568,12 @@ public class EdgeInputFram extends javax.swing.JFrame {
     private javax.swing.JTextField weightTx;
     // End of variables declaration//GEN-END:variables
     public static DirectedSparseGraph<String, String> directedGraph = new DirectedSparseGraph<String, String>();
-    public SparseGraph<String, String> unDirectedGraph = new SparseGraph<String, String>();
+    public static SparseGraph<String, String> unDirectedGraph = new SparseGraph<String, String>();
     public int counter = 1 ;
     public ArrayList<String> edgeNamesArr = new ArrayList();
     public Vector <Edge> edges = new Vector<>();
     public static Map map = new HashMap();
+    public static Map map2 = new HashMap();
     public static VisualizationImageServer<String, String> vs;
     public static JFrame frame ;
 

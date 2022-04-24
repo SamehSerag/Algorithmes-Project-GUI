@@ -129,8 +129,10 @@ public class VertexNameInputFram extends javax.swing.JFrame {
     private void finishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finishActionPerformed
         // TODO add your handling code here:
         g = new Graph(vertices);
-        EdgeInputFram EIF = new EdgeInputFram();
-        EIF.setVisible(true);         
+//        EdgeInputFram EIF = new EdgeInputFram();
+//        EIF.setVisible(true); 
+        GraphTypeFram GTF = new GraphTypeFram();
+        GTF.setVisible(true);
         super.setVisible(false);
     }//GEN-LAST:event_finishActionPerformed
 

@@ -13,7 +13,7 @@ public class ShortestPath {
     int vertexNum ;
     static int[] distance;
     static Vector<String> vertexNames;
-    String[] arrangedEdges ;
+    static String[] arrangedEdges ;
     int[][] steps;
     static Map map; 
     static Map map2;

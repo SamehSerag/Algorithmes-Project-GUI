@@ -74,6 +74,7 @@ public class MaximumOutFram extends javax.swing.JFrame {
     private void initComponents() {
 
         jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableData = new javax.swing.JTable();
         maxAddressLb = new javax.swing.JLabel();
@@ -83,9 +84,12 @@ public class MaximumOutFram extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         resultBt = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         jButton1.setText("jButton1");
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/algorithms/project/source/abstract-geometric-shape-connection-with-3d-cubes-background_42705-105.jpg"))); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(450, 0));
@@ -122,7 +126,7 @@ public class MaximumOutFram extends javax.swing.JFrame {
         getContentPane().add(closeBt, new org.netbeans.lib.awtextra.AbsoluteConstraints(391, 319, 113, -1));
 
         backBt.setFont(new java.awt.Font("Lucida Calligraphy", 1, 15)); // NOI18N
-        backBt.setText("Back");
+        backBt.setText("Previous");
         backBt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backBtActionPerformed(evt);
@@ -142,7 +146,7 @@ public class MaximumOutFram extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Lucida Calligraphy", 1, 15)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 153));
-        jLabel2.setText("To See Result step by step press Next Step One by One");
+        jLabel2.setText("To See Result step by step press Next Step");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 105, -1, 29));
 
         jLabel3.setFont(new java.awt.Font("Lucida Calligraphy", 1, 15)); // NOI18N
@@ -158,10 +162,20 @@ public class MaximumOutFram extends javax.swing.JFrame {
                 resultBtActionPerformed(evt);
             }
         });
-        getContentPane().add(resultBt, new org.netbeans.lib.awtextra.AbsoluteConstraints(468, 65, 113, -1));
+        getContentPane().add(resultBt, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 60, 113, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/algorithms/project/source/abstract-geometric-shape-connection-with-3d-cubes-background_42705-105.jpg"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 610, 370));
+        jButton2.setFont(new java.awt.Font("Lucida Calligraphy", 1, 14)); // NOI18N
+        jButton2.setText("New Input");
+        jButton2.setActionCommand("New Input");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 320, -1, -1));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/algorithms/project/source/abstract-geometric-shape-connection-with-3d-cubes-background_42705-105.jpg"))); // NOI18N
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 610, 370));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -265,6 +279,15 @@ public class MaximumOutFram extends javax.swing.JFrame {
 
         //counter = 0 ;
     }//GEN-LAST:event_resultBtActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        StartFrame stf = new StartFrame();
+        stf.setVisible(true);
+        EdgeInputFram.frame.dispose();
+        frame.dispose();
+        super.setVisible(false);
+    }//GEN-LAST:event_jButton2ActionPerformed
     public void displayMaximumFlow(){
         Vector<Edge>edges2 = MaximumFlow.graph.getEdges();
         System.out.println(edges2.size());
@@ -273,12 +296,24 @@ public class MaximumOutFram extends javax.swing.JFrame {
             System.out.println(edges2.get(i).weight+ ","+edges2.get(i).initial+"," +edges2.get(i).terminate);
              while(edgeNamesArr.contains(weight)){weight+="*" ;}
                 edgeNamesArr.add(weight);       
-                directedGraph.addEdge(weight,edges2.get(i).initial, edges2.get(i).terminate);
+                if(VertexNameInputFram.g.directed == true)
+                    directedGraph.addEdge(weight,edges2.get(i).initial, edges2.get(i).terminate);
+                else
+                    unDirectedGraph.addEdge(weight,edges2.get(i).initial, edges2.get(i).terminate);
+                    
         }
-        vs =
-               new VisualizationImageServer<String, String>(new CircleLayout<String, String>(directedGraph), 
-                       new Dimension(200, 200));
-
+        
+        if(VertexNameInputFram.g.directed == true){
+            vs =
+                   new VisualizationImageServer<String, String>(new CircleLayout<String, String>(directedGraph), 
+                           new Dimension(200, 200));
+        }
+        else{
+            vs =
+                   new VisualizationImageServer<String, String>(new CircleLayout<String, String>(unDirectedGraph), 
+                           new Dimension(200, 200));
+        }
+           
            
             
             Transformer<String, String> transformer2 = new Transformer<String, String>() {
@@ -333,7 +368,8 @@ public class MaximumOutFram extends javax.swing.JFrame {
                         System.out.println("IN Bigger IF");
                         visitedArr.add(s);
                         //String str = ChooseFram.maximumFlow.paths.get(0).edges.get(0).initial;
-                        if (ChooseFram.maximumFlow.paths.get(counter-1).map.containsKey(EdgeInputFram.map.get(s))){
+                        if (ChooseFram.maximumFlow.paths.get(counter-1).map.containsKey(EdgeInputFram.map.get(s))||
+                               ChooseFram.maximumFlow.paths.get(counter-1).map.containsKey(EdgeInputFram.map2.get(s)) ){
                             visitedArrBlue.add(s);
                             System.out.println("In Blue");
                             //vistedBool = true;
@@ -437,9 +473,11 @@ public class MaximumOutFram extends javax.swing.JFrame {
     private javax.swing.JButton backBt;
     private javax.swing.JButton closeBt;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel maxAddressLb;
     private javax.swing.JButton resultBt;
@@ -453,6 +491,7 @@ public class MaximumOutFram extends javax.swing.JFrame {
     public int count ;
     public static Boolean vistedBool;
     public  DirectedSparseGraph<String, String> directedGraph = new DirectedSparseGraph<String, String>();
+    public static SparseGraph<String, String> unDirectedGraph = new SparseGraph<String, String>();
     public static int counter = 0;
     public Boolean flag = false;  
     public  VisualizationImageServer<String, String> vs;

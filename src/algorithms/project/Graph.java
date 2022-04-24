@@ -22,7 +22,8 @@ public class Graph {
     Vector<String> vertices;
     int mat[][];
     int vertexNum ;
-
+    boolean directed = true;
+    
     public Graph(Vector <String> vertices){
         vertexNum = vertices.size();
         this.vertices = new Vector<>();
@@ -37,10 +38,15 @@ public class Graph {
     public Graph(Graph graph){
         this.copy(graph);
     }
+    
+    public void setDirected(boolean directed){
+        this.directed = directed;
+    }
 
     public void addEdge(String initialVertex , String terminalVertex,int weight){
         int init = vertices.indexOf(initialVertex);
         int ter = vertices.indexOf(terminalVertex);
+        if (directed == false ) mat[ter][init] = weight;
         mat[init][ter] = weight;
     }
 
@@ -48,7 +54,7 @@ public class Graph {
         Vector <Edge> edges = new Vector<>();
         for(int i = 0 ; i < vertexNum ; i++){
             for (int j = 0 ; j < vertexNum ; j++){
-                if(mat[i][j] >= 0){
+                if(mat[i][j] >= 0 && (directed || (!directed && j <= i))){
                     edges.add(new Edge(vertices.get(i),vertices.get(j),mat[i][j]));
                 }
             }
@@ -99,6 +105,7 @@ public class Graph {
     public void copy(Graph graph){
         vertexNum = graph.vertexNum;
         vertices = new Vector<>();
+        directed = graph.directed;
         for(int i = 0 ; i < vertexNum ; i++)
             vertices.add(graph.getVertices().get(i));
         mat = new int[vertexNum][vertexNum];
