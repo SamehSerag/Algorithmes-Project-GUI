@@ -45,7 +45,7 @@ Clone the project
 Install Java Env
 
 ```bash
-  https://www.java.com/en/download/help/download_options.html
+  https://java.com/en/download/
 ```
 
 You Can Run .EXE
